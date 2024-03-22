@@ -57,7 +57,7 @@ jobs:
       id: group-by
       with:
         paths: ${{ steps.filter.outputs.backend }}
-        glob-directory: docker/*/*
+        glob: docker/*/*
 
   matrix:
     runs-on: ubuntu-latest
@@ -78,18 +78,18 @@ jobs:
 
 ### Inputs
 
-| **Input**        | **Required** | **Description**                                                                                                       |
-| ---------------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `paths`          | yes          | The list of paths to group in JSON.<br/>(e.g. `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile"]`) |
-| `glob-directory` | yes          | The glob pattern for to group the directories of the paths by.<br/>(e.g. `docker/*/*`)                                |
+| **Input** | **Required** | **Description**                                                                                                       |
+| --------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
+| `paths`   | yes          | The list of paths to group in JSON.<br/>(e.g. `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile"]`) |
+| `glob`    | yes          | The glob pattern for grouping the directories of the paths by.<br/>(e.g. `docker/*/*`)                                |
 
 ### Outputs
 
 A full set list of possible output values for this action.
 
-| **Output**    | **Description**                                                                        |
-| ------------- | -------------------------------------------------------------------------------------- |
-| `directories` | The grouped paths in JSON.<br/>(e.g. `["backend/app1/docker", "backend/app2/docker"]`) |
+| **Output**    | **Description**                                                                              |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| `directories` | The grouped directories in JSON.<br/>(e.g. `["backend/app1/docker", "backend/app2/docker"]`) |
 
 ### PR run permissions
 
