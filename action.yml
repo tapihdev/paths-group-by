@@ -1,23 +1,22 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Group paths by glob pattern of directories'
+description: 'Group paths by glob pattern of directories'
+author: 'tapih'
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
   icon: 'heart'
   color: 'red'
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  paths:
+    description: 'The list of paths to group in JSON'
     required: true
-    default: '1000'
+  glob:
+    description: 'The glob pattern for grouping the directories of the paths by'
+    required: true
 
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  directories:
+    description: 'The grouped directories in JSON'
 
 runs:
   using: node20

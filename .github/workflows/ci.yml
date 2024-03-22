@@ -57,8 +57,17 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          paths: |
+            [
+              "path/to/dir1/file",
+              "path/to/dir2/fileA",
+              "path/to/dir2/fileB"
+            ]
+          glob: 'path/to/*'
 
-      - name: Print Output
+      - name: Evaluate Output
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        env:
+          DIRECTORIES: ${{ steps.test-action.outputs.directories }}
+        run: |
+          [ "${DIRECTORIES}" = '["path/to/dir1","path/to/dir2"]' ] || exit 1
