@@ -16,3 +16,11 @@ MD030:
 # Code block style
 MD046:
   style: fenced
+
+MD013:
+  code_blocks: false
+  tables: false
+
+MD033:
+  allowed_elements:
+    - br

@@ -1,31 +1,37 @@
 # paths-group-by
 
-This action runs in conjunction with https://github.com/dorny/paths-filter.
-It parses the result of `paths-filter` and groups the paths by a glob pattern.
+This action runs in conjunction with
+[dorny/paths-filter](https://github.com/dorny/paths-filter). It parses the
+result of `paths-filter` and groups the paths by a glob pattern.
 
 ## How it works
 
 This action works in 3 steps:
+
 - Create a list that contains directories of the paths.
 - Filter out the directories if they don't match the glob pattern.
 - Group the directories by the glob pattern
 
-The grouped directories only have the part of the path that matches the glob pattern.
+The grouped directories only have the part of the path that matches the glob
+pattern.
 
-This action does not provide the functionality to handle complex filtering rules, such as excluding paths,
-because the `paths-filter` action already provides such functionality.
+This action does not provide the functionality to handle complex filtering
+rules, such as excluding paths, because the `paths-filter` action already
+provides such functionality.
 
 ## Example
 
 - Pattern: `docker/*/*`
-- Input: `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile", "backend/app2/docker-compose.yml"]`
+- Input:
+  `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile", "backend/app2/docker-compose.yml"]`
 - Output: `["backend/app1/docker", "backend/app2/docker"]`
 
 ## Setup
 
 ### Configure the workflow
 
-This action accepts only JSON inputs. Please set `json` as the value for the `list-files` input in `paths-filter`.
+This action accepts only JSON inputs. Please set `json` as the value for the
+`list-files` input in `paths-filter`.
 
 ```yaml
 name: Filter paths and group by
@@ -78,10 +84,10 @@ jobs:
 
 ### Inputs
 
-| **Input** | **Required** | **Description**                                                                                                       |
-| --------- | ------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `paths`   | yes          | The list of paths to group in JSON.<br/>(e.g. `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile"]`) |
-| `glob`    | yes          | The glob pattern for grouping the directories of the paths by.<br/>(e.g. `docker/*/*`)                                |
+| **Input** | **Required** | **Description**                                                                                                   |
+| --------- | ------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `paths`   | yes          | The list of paths to group in JSON. (e.g. `["backend/app1/docker/Dockerfile", "backend/app2/docker/Dockerfile"]`) |
+| `glob`    | yes          | The glob pattern for grouping the directories of the paths by.<br/>(e.g. `docker/*/*`)                            |
 
 ### Outputs
 
@@ -93,4 +99,5 @@ A full set list of possible output values for this action.
 
 ### PR run permissions
 
-This action itself requires the no permission, though `paths-filter` requires the `contents` and `pull-requests` permissions.
+This action itself requires the no permission, though `paths-filter` requires
+the `contents` and `pull-requests` permissions.

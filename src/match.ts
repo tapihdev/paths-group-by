@@ -1,6 +1,6 @@
 import * as picomatch from 'picomatch'
 
-export function normalizePath(str: string) {
+export function normalizePath(str: string): string {
   // Deduplicate multiple slashes.
   const duduped = str.replace(/(\/){2,}/g, '/')
 
@@ -12,9 +12,9 @@ export function normalizePath(str: string) {
   return duduped.replace(/\/$/g, '')
 }
 
-export function match(glob: string, path: string) {
+export function match(glob: string, path: string): string | null {
   // Validate the glob pattern.
-  if (glob.indexOf('**') !== -1) {
+  if (glob.includes('**')) {
     throw new Error(
       '`**` is not supported in the glob pattern to avoid too many matches. Use `*` instead.'
     )
@@ -27,7 +27,7 @@ export function match(glob: string, path: string) {
       // See https://github.com/micromatch/picomatch/tree/master?tab=readme-ov-file#picomatch-options for detail.
       {
         dot: true, // Allow matching hidden files.
-        noglobstar: true, // Disable `**` to avoid too many matches.
+        noglobstar: true // Disable `**` to avoid too many matches.
       }
     )
     .toString()
@@ -35,7 +35,7 @@ export function match(glob: string, path: string) {
   // The regex string should have leading '/^' and trailing '$/'.
   // This should never happen, but validating the regex for safety.
   // https://github.com/micromatch/picomatch/blob/13efdf0c7d0e07ee30bf78d0079184aa4a0ec7d4/lib/picomatch.js#L327
-  if (regexStr.slice(0, 2) !== '/^' || regexStr.slice(-2) !== '$/') {
+  if (!regexStr.startsWith('/^') || !regexStr.endsWith('$/')) {
     throw new Error(`unexpected regex "${regexStr}"`)
   }
 
