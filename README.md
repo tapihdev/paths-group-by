@@ -99,5 +99,5 @@ A full set list of possible output values for this action.
 
 ### PR run permissions
 
-This action itself requires the no permission, though `paths-filter` requires
+This action itself requires no permission, though `paths-filter` requires
 the `contents` and `pull-requests` permissions.
