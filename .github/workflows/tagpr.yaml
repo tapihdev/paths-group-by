@@ -5,9 +5,7 @@ on:
     - main
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: read
+  contents: read
 
 jobs:
   tagpr:
@@ -20,8 +18,9 @@ jobs:
       - name: Tagpr
         id: tagpr
         uses: tapihdev/actionshub/Songmu/tagpr@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          app-id: ${{ vars.APP_ID_TAGPR }}
+          private-key: ${{ secrets.PRIVATE_KEY_TAGPR }}
 
       - name: Annotate major and minor tags
         if: steps.tagpr.outputs.tag != ''
