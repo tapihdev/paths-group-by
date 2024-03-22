@@ -5,23 +5,29 @@ on:
     - main
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: read
+  contents: none
 
 jobs:
   tagpr:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: token
+        with:
+          app-id: ${{ vars.APP_ID_TAGPR }}
+          private-key: ${{ secrets.PRIVATE_KEY_TAGPR }}
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.token.outputs.token }}
 
       - name: Tagpr
         id: tagpr
         uses: tapihdev/actionshub/Songmu/tagpr@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github-token: ${{ steps.token.outputs.token }}
 
       - name: Annotate major and minor tags
         if: steps.tagpr.outputs.tag != ''
