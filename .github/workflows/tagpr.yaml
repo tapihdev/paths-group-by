@@ -1,0 +1,29 @@
+name: Tagpr
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  tagpr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Tagpr
+        id: tagpr
+        uses: tapihdev/actionshub/Songmu/tagpr@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Annotate major and minor tags
+        if: steps.tagpr.outputs.tag != ''
+        uses: tapihdev/tag-major-minor-semver@v1
+        with:
+          tag: ${{ steps.tagpr.outputs.tag }}
