@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.4](https://github.com/tapihdev/paths-group-by/compare/v0.0.3...v0.0.4) - 2024-12-08
+- chore: remove super linter and devcontainer by @tapih in https://github.com/tapihdev/paths-group-by/pull/14
+- chore: use renovate-config repository by @tapih in https://github.com/tapihdev/paths-group-by/pull/13
+
 ## [v0.0.3](https://github.com/tapihdev/paths-group-by/compare/v0.0.2...v0.0.3) - 2024-03-22
 - ci: use updated tagpr by @tapih in https://github.com/tapihdev/paths-group-by/pull/10
 
