@@ -28,10 +28,9 @@ provides such functionality.
 
 ## Setup
 
-### Configure the workflow
+### Configure the workflow: `dorny/paths-filter`
 
-This action accepts only JSON inputs. Please set `json` as the value for the
-`list-files` input in `paths-filter`.
+This action accepts only JSON inputs. Please set `list-files: json`.
 
 ```yaml
 name: Filter paths and group by
@@ -63,6 +62,61 @@ jobs:
       id: group-by
       with:
         paths: ${{ steps.filter.outputs.docker }}
+        glob: docker/*/*
+
+  matrix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        directory: ${{fromJson(needs.paths.outputs.directories)}}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: ${{ matrix.directory }}
+    - name: Do something
+      ...
+```
+
+### Configure the workflow: `tj-actions/changed-files`
+
+This action accepts only JSON inputs. Please set `json: true` and `escape_json: false`.
+
+
+```yaml
+name: Filter paths and group by
+on:
+  pull_request:
+
+jobs:
+  paths:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    timeout-minutes: 5
+    outputs:
+      directories: ${{ steps.group-by.outputs.directories }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Get changed files
+      id: changed
+      uses: tj-actions/changed-files@v45
+      with:
+        skip_initial_fetch: true
+        json: true
+        escape_json: false
+        files: |
+          docker/**
+    - name: Group by
+      uses: tapihdev/paths-group-by@v0
+      id: group-by
+      with:
+        paths: ${{ steps.changed.outputs.all_modified_files }}
         glob: docker/*/*
 
   matrix:
