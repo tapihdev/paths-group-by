@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.0](https://github.com/tapihdev/paths-group-by/compare/v0.0.5...v0.1.0) - 2025-03-15
+- doc: Update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/52
+- doc: Update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/54
+
 ## [v0.0.5](https://github.com/tapihdev/paths-group-by/compare/v0.0.4...v0.0.5) - 2025-03-15
 - doc: update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/44
 - chore(deps): update dependency eslint-plugin-jest to v28 by @renovate in https://github.com/tapihdev/paths-group-by/pull/41
