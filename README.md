@@ -61,7 +61,8 @@ jobs:
       uses: tapihdev/paths-group-by@v0
       id: group-by
       with:
-        paths: ${{ steps.filter.outputs.docker }}
+        paths: |
+          ${{ steps.filter.outputs.docker_files }}
         glob: docker/*/*
 
   matrix:
