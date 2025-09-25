@@ -72,7 +72,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^22.0.0",
-    "@types/picomatch": "^3.0.0",
+    "@types/picomatch": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.1.1",
     "@vercel/ncc": "^0.38.1",
