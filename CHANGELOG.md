@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.1.0](https://github.com/tapihdev/paths-group-by/compare/v0.0.5...v0.1.0) - 2026-07-27
+- doc: Update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/52
+- doc: Update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/54
+- chore(deps): update dependency @types/picomatch to v4 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/66
+- chore(deps): update actions/setup-node action to v4.4.0 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/58
+- chore(deps): update actions/create-github-app-token action to v1.12.0 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/57
+- chore(deps): update github/codeql-action action to v3.31.2 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/56
+- chore(deps): update github/codeql-action action to v3.37.1 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/69
+- chore(deps): update node.js to v22.23.1 by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/64
+- chore(deps): update dependency picomatch to v4.0.4 [security] - abandoned by @renovate[bot] in https://github.com/tapihdev/paths-group-by/pull/70
+
 ## [v0.0.5](https://github.com/tapihdev/paths-group-by/compare/v0.0.4...v0.0.5) - 2025-03-15
 - doc: update README.md by @tapih in https://github.com/tapihdev/paths-group-by/pull/44
 - chore(deps): update dependency eslint-plugin-jest to v28 by @renovate in https://github.com/tapihdev/paths-group-by/pull/41
